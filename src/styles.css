@@ -1,1 +1,137 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --success-green: #10b981;
+  --success-green-rgb: 16, 185, 129;
+  --trust-blue: #3b82f6;
+  --trust-blue-rgb: 59, 130, 246;
+  --warning-amber: #f59e42;
+  --dark-bg: #0f172a;
+  --dark-bg-rgb: 15, 23, 42;
+  --dark-card: #1e293b;
+  --dark-card-rgb: 30, 41, 59;
+  --dark-border: #334155;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--dark-bg);
+  color: white;
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(var(--dark-card-rgb), 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .sidebar {
+    background: rgba(var(--dark-bg-rgb), 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--dark-border);
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200;
+  }
+  
+  .nav-item:hover {
+    @apply bg-white/10;
+  }
+  
+  .nav-item.active {
+    @apply bg-[rgba(var(--success-green-rgb),0.2)] text-[var(--success-green)] border border-[rgba(var(--success-green-rgb),0.3)];
+  }
+  
+  .stat-card {
+    @apply glass-card rounded-xl p-6 transition-all duration-300;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+  }
+  
+  .progress-bar {
+    @apply h-3 rounded-full bg-[var(--dark-border)] overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500;
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-[var(--success-green)] text-white rounded-lg font-medium transition-all duration-200;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-[rgba(var(--success-green-rgb),0.8)] shadow-lg shadow-[rgba(var(--success-green-rgb),0.3)];
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-[var(--trust-blue)] text-white rounded-lg font-medium transition-all duration-200;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-[rgba(var(--trust-blue-rgb),0.8)] shadow-lg shadow-[rgba(var(--trust-blue-rgb),0.3)];
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-[var(--dark-card)] border border-[var(--dark-border)] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[var(--trust-blue)] transition-colors;
+  }
+  
+  .table-row {
+    @apply border-b border-[var(--dark-border)] hover:bg-white/5 transition-colors;
+  }
+  
+  .insight-card {
+    @apply glass-card rounded-xl p-5 border-l-4;
+  }
+  
+  .insight-card.positive {
+    border-left-color: var(--success-green);
+  }
+  
+  .insight-card.warning {
+    border-left-color: var(--warning-amber);
+  }
+  
+  .insight-card.info {
+    border-left-color: var(--trust-blue);
+  }
+}
+
+/* Scrollbar styling */
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dark-border) var(--dark-bg);
+}
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
